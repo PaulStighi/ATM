@@ -1,0 +1,18 @@
+{
+  "name": "atm",
+  "version": "1.0.0",
+  "description": "ATM Soft",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "author": "Paul Stiegelbauer",
+  "license": "ISC",
+  "devDependencies": {
+    "cucumber": "^5.1.0"
+  },
+  "dependencies": {
+    "@types/node": "^13.1.4",
+    "http": "0.0.0"
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "db_config" : "C:\\Users\\pauls\\Desktop\\ATM\\config\\DataBase\\db_config.json",
+    "output" : "/home/users/paul/Desktop/ATM/data/output.txt",
+    "printer" : "Console",
+    "paper_amount" : 100,
+    "strategy_client" : "DescAsc",
+    "bill_boxes" :
+    [   
+        {"bills_number" : 10,  "bill_value" : 200},
+        {"bills_number" : 20,  "bill_value" : 100},
+        {"bills_number" : 40,  "bill_value" : 50 },
+        {"bills_number" : 200, "bill_value" : 10 }
+    ]
+}

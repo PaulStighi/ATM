@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>768</x>
+      <y>288</y>
+      <w>200</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>*ResourceControl*
+--
+-printer : Printer
+-bill_box : BillBox
+--
++NeedsMaintenance(code) : void
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>112</x>
+      <y>288</y>
+      <w>168</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>*Card*
+--
++card_number : String[]
++exp_date : pair(int,int)
++cvv_number : unsigned int
++holder_name : String[]
+--
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>776</x>
+      <y>120</y>
+      <w>208</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>*AccDB*
+--
+-card_db : Account[]
+--
++SearchDB(Card,unsigned int) : int
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>616</x>
+      <y>472</y>
+      <w>208</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>*Dealer*
+--
+-bill_box : BillBox
++asked_sum : unsigned int
+--
++SetAskedSum(unsigned int) : void
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>472</y>
+      <w>280</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>*BillBox*
+--
+-num_of_bills : unsigned int[4]
+-chosen_bills : unsigned int[4]
+-safe_box : SafeBox
+--
++VerifyPossible(unsigned int) : bool
++VerifyEquilibrium(unisgned int[4]) : bool
++SetChosenBills(unsigned int) : unsigned int[4]
++UpdateBills() : void
++CheckResources() : bool
++RefillResources() : void
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1216</x>
+      <y>472</y>
+      <w>184</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>*SafeBox*
+--
+-lock_state : bool
+-money_in_state : bool
+-unlock_time : unsigned int
+-time_money_in : unsigned int
+--
++SetLockState() : void
++SetMoneyInState() : void
++SetTimeMoneyIn() : bool
++UnsetMoneyInState() : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1192</x>
+      <y>256</y>
+      <w>208</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>*Printer*
+--
+-paper_amount : unsigned int
+-ink_quantity : unsigned int
+--
++PrintReceipt() : bool
++PrintAccBalance() : bool
++VerifyPossible(unsigned int) : bool
++CheckResources() : bool
++RefillResources() : void
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>344</x>
+      <y>288</y>
+      <w>208</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>*Operator*
+--
++card_data : Card
+-acc_auth_syst : AccAuthSyst
+-dealer : Dealer
+-printer : Printer
+-safe_box : SafeBox
+-res_control : ResourceControl
++pin_num : unsigned int
++asked_sum : unsigned int
+-acc_ballance : unsigned int
+--
++SetCardData(Card) : void
++SetPinNum(unsigned int) : void
++SetAskedSum(unsigned int) : void
+-DiplayErr(code) : void
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>536</x>
+      <y>120</y>
+      <w>192</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>*AccAuthSyst*
+--
+-acc_data_base : AccDB
++card_data : Card
++pin_num : unsigned int
+--
++SetCardData(Card) : void
++SetPinNum(unsigned int) : void
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1088</x>
+      <y>368</y>
+      <w>72</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=left
+enum Bills{
+10,
+50,
+100,
+200}
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>136</x>
+      <y>408</y>
+      <w>112</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=left
+enum Errors{
+WrongPIN,
+NotEnoughMoney,
+AtmNeedsService
+MoneyNotPicked}
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1032</x>
+      <y>120</y>
+      <w>168</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>*Account*
+--
++card_data : Card
++card_pin : unsigned int
++acc_balance : unsigned int
+--
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>288</y>
+      <w>240</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>256</y>
+      <w>728</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0;890.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>496</y>
+      <w>888</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0;1090.0;210.0;1090.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>288</y>
+      <w>248</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;290.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>352</y>
+      <w>72</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>416</y>
+      <w>88</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>472</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1152</x>
+      <y>472</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>376</x>
+      <y>120</y>
+      <w>176</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;210.0;10.0;10.0;200.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>120</y>
+      <w>72</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>976</x>
+      <y>120</y>
+      <w>72</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>272</x>
+      <y>288</y>
+      <w>88</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>376</x>
+      <y>496</y>
+      <w>320</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>380.0;290.0;10.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>376</y>
+      <w>432</w>
+      <h>440</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>520.0;530.0;10.0;530.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>720</y>
+      <w>368</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>*User*
+--
+-operator : Operator
+-safe_box : SafeBox
++card_data : Card
+--
+-SetCardData(String[], pair(int,int), unsigned int, String[]) : void
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1040</x>
+      <y>616</y>
+      <w>328</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;140.0;390.0;140.0;390.0;10.0</additional_attributes>
+  </element>
+</diagram>

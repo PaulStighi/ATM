@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>826</x>
+      <y>483</y>
+      <w>287</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>*ResourceControl*
+--
+-printer : Printer
+-bill_boxes : BillBox[]
+--
++ResourceControl(printer : Printer, bill_boxes : BillBox[])
+
++printerMaintenance() : bool
++billBoxMaintenance(bill_box : BillBox) : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>924</x>
+      <y>231</y>
+      <w>336</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>*AccDB*
+--
+-acc_db : [acc : Account, crt_sold : int][]
+--
++AccDB(path : String[])
+
++searchAcc(card_number : String[]) : [acc : Account, crt_sold : int]
++updateAccSold(card_number : String[], new_sold : int) : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>686</x>
+      <y>658</y>
+      <w>315</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>*Dealer*
+--
+-bill_boxes : BillBox[]
+--
++Dealer(bill_boxes : BillBox[])
+
++handleSum(amount : int) : int[]
++sendBillsBack() : bool
++billBoxesCheck(amount : int) : BillBox[]
+
+-chooseDistribution(amount : int) : int[]
+-strategyOfDistribution(amount : int, chosen_bills : int[]) : bool
+-updateBillBox(bill_box : BillBox, bills_to_send : int) : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1064</x>
+      <y>658</y>
+      <w>315</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>*BillBox*
+--
+-num_of_bills : int
+-bill_value : int
+-safe_box : SafeBox
+--
++BillBox(num_of_bills : int, bill_value : int, safe_box : SafeBox)
+
++getNumOfBills() : int
++getBillValue() : int
++updateNumOfBills(number_to_add : int) : bool
++sendBills(how_many : int) : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1414</x>
+      <y>658</y>
+      <w>217</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>*SafeBox*
+--
+-locked : bool
+-money_in_safe_box : int
+--
++SafeBox()
+
++getMoneyInSafeBox() : int
++addMoneyInSafeBox(amount : int) : bool
++unlockSafeBox() : bool
+
+-lockSafeBox() : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1330</x>
+      <y>441</y>
+      <w>224</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>*Printer*
+--
+-paper_amount : int
+--
++Printer(100,path : String[])
+
++getPaperAmount() : int
++printSold(sold : int) : bool
++printReceipt(amount : int, sold : int) : bool
++refillPaper() : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>483</y>
+      <w>322</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>*Operator*
+--
+-authenticator : AccAuthSyst
+-dealer : Dealer
+-res_control : ResourceControl
+-printer : Printer
+-safe_box : SafeBox
+-chosen_bills : int[]
+--
++Operator(authenticator, printer, res_control, dealer, safe_box)
+
++login(card_number : String[], card_pin : int) : bool
++printAccSold() : bool
++withdraw(amount : int, need_receipt : bool) : bool
++logout() : bool
+
+-checkMoneyInSafeBox(amount : int) : bool
+-returnMoneyToBillBoxes() : bool
+-printerCheck() : void
+-billBoxesCheck(amount : int) : void
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>532</x>
+      <y>231</y>
+      <w>322</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>*AccAuthSyst*
+--
+-acc_data_base : AccDB
+-session_account : Account
+-crt_sold : int
+--
++AccAuthSyst(acc_data_base : AccDB)
+
++login(card_num : String[], card_pin : int) : bool
++logout() : bool
++hasActiveSession() : bool
++getAccSold() : int | Error
++updateAccSold(withdrawn_amount : int) : bool
+
+-authenticate(card_num : String[], card_pin : int) : [Account, int]
+-setSession(acc : Account, crt_sold : int) : void
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1323</x>
+      <y>231</y>
+      <w>245</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>*Account*
+--
+-card_number : String[]
+-card_pin : int
+--
++Account(card_number : String[], card_pin : int)
+
++getCardNumber : String[]
++getCardPin() : int
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>483</y>
+      <w>210</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>581</x>
+      <y>441</y>
+      <w>763</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0;1070.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>483</x>
+      <y>707</y>
+      <w>1022</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;260.0;1440.0;260.0;1440.0;129.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1106</x>
+      <y>504</y>
+      <w>105</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0;130.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>658</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>994</x>
+      <y>651</y>
+      <w>84</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+1...*</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1372</x>
+      <y>658</y>
+      <w>56</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>434</x>
+      <y>231</y>
+      <w>112</w>
+      <h>266</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;360.0;10.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1253</x>
+      <y>224</y>
+      <w>84</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+1...*</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1106</x>
+      <y>483</y>
+      <w>238</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;320.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>847</x>
+      <y>231</y>
+      <w>91</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+</diagram>

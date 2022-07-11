@@ -1,0 +1,10 @@
+{
+    "accounts" :
+    [
+        {"card_number" : "2123 1212", "card_pin" : "1234", "sold" : "3700", "email" : "a@a.com", "phone_number" : "0"},
+        {"card_number" : "3221 3173", "card_pin" : "1234", "sold" : "300" , "email" : ""       , "phone_number" : "1"},
+        {"card_number" : "4750 4891", "card_pin" : "1234", "sold" : "700" , "email" : "b@b.com", "phone_number" : "" },
+        {"card_number" : "7519 3147", "card_pin" : "4317", "sold" : "350" , "email" : ""       , "phone_number" : "" },
+        {"card_number" : "6478 1247", "card_pin" : "3412", "sold" : "620" , "email" : ""       , "phone_number" : "" }
+    ]
+}

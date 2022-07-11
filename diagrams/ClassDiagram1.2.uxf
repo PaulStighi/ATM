@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>525</x>
+      <y>469</y>
+      <w>196</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>*ResourceControl*
+--
+-printer : Printer
+-bill_box : BillBox[]
+--
++ResourceControl(Printer, BillBox[])
+
++printerMaintenance() : bool
++Maintenance(bill_box : BillBox) : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>623</x>
+      <y>210</y>
+      <w>189</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>*AccDB*
+--
+-acc_db : Account[]
+--
++AccDB(Account[])
+
++searchAcc(card_number) : Account
+-updateAccSold(crt_sold) : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>525</x>
+      <y>637</y>
+      <w>154</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>*Dealer*
+--
+-bill_box : BillBox[]
+-chosen_bills : int[]
+--
++Dealer(BillBox[])
+
++handleSum(amount) : bool
+-chooseBills(amount) : int
+-updateBillBoxes(int[]) : bool
+
++getEmptyBillBox() : BillBox[]
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>637</y>
+      <w>147</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>*BillBox*
+--
+-num_of_bills : int = 0
+-safe_box : SafeBox
+--
++BillBox()
+
++getNumOfBills() : int
++sendBills(value) : bool
++updateBills(number) : bool
+
++refillBillBox() : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>980</x>
+      <y>637</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>*SafeBox*
+--
+-locked : bool = 1
+-money_in_safe_box : int = 0
+--
++SafeBox()
+
++getMoneyInSafeBox() : int
++updateMoneyInSafeBox(amount) : bool
+
++unlockSafeBox() : bool
+-lockSafeBox() : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>875</x>
+      <y>420</y>
+      <w>273</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>*Printer*
+--
+-paper_amount : int
+--
++Printer()
+
++printAccSold(sold) : bool
++printWithdrawdReceipt(wd_amount, sold_left) : bool
++printWarning(String[]) : bool
++printATMNeedsServiceError() : bool
++refillPaper() : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>147</x>
+      <y>469</y>
+      <w>322</w>
+      <h>322</h>
+    </coordinates>
+    <panel_attributes>*Operator*
+--
+-acc_auth_syst : AccAuthSyst
+-dealer : Dealer
+-res_control : ResourceControl
+-printer : Printer
+-safe_box : SafeBox
+-logged_in : bool = 0
+--
++Operator(acc_auth_syst, dealer, res_control, printer, safe_box)
+
++login(card_number, pin) : bool
+-logout() : bool
+
++printAccSold() : bool
+-getSold() : int
+
++withdraw(amount) : bool
+-updateSold(amount) : bool
+-checkMoneyInSafeBox(amount) : bool
+-unlockSafeBox() : bool
+-printWithdrawReceipt(amount) : bool
+-billBoxResourceControl(bill_box : BillBox) : bool
+
+-getAuthWarning() : Warning
+-printWarning(Warning) : bool
+-printATMNeedsServiceError() : bool
+-printerResourceControl() : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>210</y>
+      <w>231</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>*AccAuthSyst*
+--
+-acc_data_base : AccDB
+-crt_account : Account
+-warning : Warning
+--
++AccAuthSyst(acc_data_base : AccDB)
+
++authenticate(card_num : int, pin : int) : bool
+-setCrtAccount(Account) : void
+-setWarningMessage(String[]) : void
+
++getWarning() : Warning
+
++getAccSold() : int
++updateAccSold(crt_sold) : bool
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>903</x>
+      <y>210</y>
+      <w>315</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>*Account*
+--
+-card_number : String[]
+-card_pin : int
+-crt_sold : int
+--
++Account(card_number : String[], card_pin : int, crt_sold : int)
+
++getCardNumber() : String[]
++getCardPin() : int
++getCrtSold() : int
++setCrtSold(amount) : void
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>469</y>
+      <w>77</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>357</x>
+      <y>420</y>
+      <w>532</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0;740.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>315</x>
+      <y>770</y>
+      <w>756</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;50.0;1060.0;50.0;1060.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>714</x>
+      <y>469</y>
+      <w>175</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;13.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>714</x>
+      <y>490</y>
+      <w>98</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0;120.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>637</y>
+      <w>77</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>637</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>868</x>
+      <y>637</y>
+      <w>126</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>266</x>
+      <y>210</y>
+      <w>63</w>
+      <h>273</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;370.0;10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>539</x>
+      <y>210</y>
+      <w>98</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;40.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>805</x>
+      <y>210</y>
+      <w>112</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>385</x>
+      <y>98</y>
+      <w>189</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>*Warning*
+--
+-warn_message : String[]
+--
++Warning()
+
++setWarningMessage(String[]) : void
++getWarningMessage() : String[]
+style=autoresize
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>189</y>
+      <w>21</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
