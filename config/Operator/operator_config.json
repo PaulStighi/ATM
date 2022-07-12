@@ -1,6 +1,6 @@
 {
     "db_config" : "D:\\ATM\\config\\DataBase\\db_config.json",
-    "output" : "/home/users/paul/Desktop/ATM/data/output.txt",
+    "output" : "D:\\ATM\\data\\output.txt",
     "printer" : "Console",
     "paper_amount" : 100,
     "strategy_client" : "DescAsc",
