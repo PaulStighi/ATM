@@ -1,5 +1,5 @@
 {
-    "db_config" : "C:\\Users\\pauls\\Desktop\\ATM\\config\\DataBase\\db_config.json",
+    "db_config" : "D:\\ATM\\config\\DataBase\\db_config.json",
     "output" : "/home/users/paul/Desktop/ATM/data/output.txt",
     "printer" : "Console",
     "paper_amount" : 100,

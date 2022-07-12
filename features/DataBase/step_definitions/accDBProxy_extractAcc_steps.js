@@ -2,7 +2,7 @@ const assert = require('assert');
 const { Given, When, Then } = require('cucumber');
 
 var Client = require("../../../bzl/lib/DataBase/AccDBClient").Client;
-var db_config = "C:\\Users\\Paul\\Desktop\\Coding\\ATM\\config\\DataBase\\db_config.json";
+var db_config = "D:\\ATM\\config\\DataBase\\db_config.json";
 var accDB_proxy = Client.getAccDBProxy(db_config);
 
 Given('AccDBProxy : The card number for the account is {string}',function (string) {

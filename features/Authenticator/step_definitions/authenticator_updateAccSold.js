@@ -2,7 +2,7 @@ const assert = require('assert');
 const { Given, When, Then } = require('cucumber');
 
 var AccAuthSyst = require("../../../bzl/lib/Authenticator/AccAuthSyst").AccAuthSyst;
-var db_config = "C:\\Users\\Paul\\Desktop\\Coding\\ATM\\config\\DataBase\\db_config.json";
+var db_config = "D:\\ATM\\config\\DataBase\\db_config.json";
 var authenticator = new AccAuthSyst(db_config);
 
 Given('Authenticator : An Account with card number {string}', function (string) {

@@ -3,7 +3,7 @@ const { Given, When, Then } = require('cucumber');
 
 var AccDBFFileFactory = require("../../../bzl/lib/DataBase/AccDBFileFactory").AccDBFileFactory;
 var AccDBFile = require("../../../bzl/lib/DataBase/AccDBFile").AccDBFile;
-var db_config = "C:\\Users\\Paul\\Desktop\\Coding\\ATM\\config\\DataBase\\db_config.json";
+var db_config = "D:\\ATM\\config\\DataBase\\db_config.json";
 var factory;
 var db;
 

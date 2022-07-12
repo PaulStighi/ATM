@@ -2,7 +2,7 @@ const assert = require('assert');
 const { Given, When, Then } = require('cucumber');
 
 var OperatorDirector = require("../../../bzl/lib/Operator/Builder/OperatorDirector").OperatorDirector;
-var operator_config = "C:\\Users\\Paul\\Desktop\\Coding\\ATM\\config\\Operator\\operator_config.json";
+var operator_config = "D:\\ATM\\config\\Operator\\operator_config.json";
 var operator_director = new OperatorDirector();
 var operator;
 

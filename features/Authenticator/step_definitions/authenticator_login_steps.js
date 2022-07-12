@@ -3,7 +3,7 @@ const { Given, When, Then } = require('cucumber');
 
 var AccAuthSyst = require("../../../bzl/lib/Authenticator/AccAuthSyst").AccAuthSyst;
 var Errors = require("../../../config/errors").Errors;
-var db_config = "C:\\Users\\Paul\\Desktop\\Coding\\ATM\\config\\DataBase\\db_config.json";
+var db_config = "D:\\ATM\\config\\DataBase\\db_config.json";
 var authenticator = new AccAuthSyst(db_config);
 
 Given('Authenticator : An account is logged with card_number {string} and pin {int}', function (string,int) {

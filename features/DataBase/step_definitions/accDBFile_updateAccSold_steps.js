@@ -2,7 +2,7 @@ const assert = require('assert');
 const { Given, When, Then } = require('cucumber');
 
 var AccDBFileFactory = require("../../../bzl/lib/DataBase/AccDBFileFactory").AccDBFileFactory;
-var db_config = "C:\\Users\\Paul\\Desktop\\Coding\\ATM\\config\\DataBase\\db_config.json";
+var db_config = "D:\\ATM\\config\\DataBase\\db_config.json";
 var factory = new AccDBFileFactory();
 var acc_db;
 
